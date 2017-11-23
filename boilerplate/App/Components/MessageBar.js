@@ -1,5 +1,5 @@
 import React from 'react'
-import { MessageBar, MessageBarManager } from '../Components/MessageBar'
+import { MessageBar, MessageBarManager } from 'react-native-message-bar'
 
 export default class extends React.Component {
   componentDidMount () {

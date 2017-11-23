@@ -1,6 +1,7 @@
 const type = {
   base: 'Avenir-Book',
   bold: 'Avenir-Black',
+  italic: 'PlayfairDisplay-Italic',
   emphasis: 'HelveticaNeue-Italic'
 }
 
@@ -45,11 +46,19 @@ const style = {
   },
   normal: {
     fontFamily: type.base,
-    fontSize: size.regular
+    fontSize: size.regular,
+    backgroundColor: 'transparent'
+  },
+  bold: {
+    fontFamily: type.bold,
+    fontSize: size.regular,
+    backgroundColor: 'transparent',
+    fontWeight: 'bold'
   },
   description: {
     fontFamily: type.base,
-    fontSize: size.medium
+    fontSize: size.medium,
+    backgroundColor: 'transparent'
   }
 }
 

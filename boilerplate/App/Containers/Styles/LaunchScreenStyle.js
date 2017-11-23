@@ -1,36 +1,33 @@
 import { StyleSheet } from 'react-native'
-import { Fonts } from '../../Themes'
-import metrics from '../../Themes/Metrics'
-import colors from '../../Themes/Colors'
+import { Fonts, Colors, Metrics } from '../../Themes'
 
 export default StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    alignItems: 'center'
-    // justifyContent: 'center'
+    backgroundColor: Colors.transparent
   },
-  welcome: {
-    ...Fonts.style.normal,
-    marginTop: 40,
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    alignSelf: 'center'
+  backgroundImage: {
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight
   },
-  title: {
-    ...Fonts.style.normal,
-    marginTop: metrics.baseMargin,
-    marginBottom: 40,
-    ...Fonts.style.h2,
-    fontSize: 25,
-    color: colors.green,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    alignSelf: 'center'
+  logo: {
+    width: 200,
+    height: 100,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    top: Metrics.screenHeight / 4
   },
-  loading: {
-    marginVertical: 17,
+  content: {
     position: 'absolute',
-    top: metrics.screenHeight / 2 - 20
+    left: 0,
+    right: 0,
+    bottom: Metrics.screenHeight * 0.15
+  },
+  contentTextStyles: {
+    ...Fonts.style.normal,
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 18,
+    marginTop: 10
   }
 })

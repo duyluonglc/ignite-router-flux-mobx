@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import styles from './Styles/SearchBarStyles'
-import { Colors, Metrics } from '../Themes/'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import I18n from 'react-native-i18n'
+import { Colors, Images } from '../Themes/'
 
 export default class SearchBar extends Component {
   static propTypes = {
@@ -21,7 +18,7 @@ export default class SearchBar extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.inputWrap}>
-          <Icon name='search' size={Metrics.icons.tiny} style={styles.searchIcon} />
+          <Image source={Images.iconSearch} style={styles.searchIcon} />
           <TextInput
             ref='searchText'
             autoFocus
@@ -40,12 +37,12 @@ export default class SearchBar extends Component {
           {
             searchTerm && searchTerm.trim() ? (
               <TouchableOpacity activeOpacity={0.7} onPress={onClearText}>
-                <Ionicons name='ios-close-circle' size={Metrics.icons.tiny} style={styles.clearTextIcon} />
+                <Image source={Images.iconDelete} style={styles.clearTextIcon} />
               </TouchableOpacity>) : null
           }
         </View>
         <TouchableOpacity activeOpacity={0.7} onPress={onCancel} style={styles.cancelButton}>
-          <Text style={styles.buttonLabel}>{I18n.t('cancel')}</Text>
+          <Text style={styles.buttonLabel}>Cancel</Text>
         </TouchableOpacity>
       </View>
     )

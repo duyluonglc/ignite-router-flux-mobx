@@ -1,37 +1,28 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../../Themes/'
+import {StyleSheet} from 'react-native'
+import { Fonts, Colors, Metrics } from '../../../Themes/'
 
 export default StyleSheet.create({
-  container: {
-    justifyContent: 'center',
+  tabIcon: {
     alignItems: 'center',
-    // borderTopWidth: 4,
-    width: Metrics.screenWidth / 3 - 30,
-    borderTopColor: Colors.transparent
+    opacity: 0.5
+  },
+  tabIconActive: {
+    // marginTop: Metrics.isIphoneX ? 10 : 5,
+    height: Metrics.tabBarHeight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.snow,
+    marginTop: Metrics.isIphoneX ? 27 : 0,
+    paddingBottom: Metrics.tabBarPaddingBottom
   },
   imageIcon: {
-    resizeMode: 'contain',
     width: 20,
-    height: 20,
-    opacity: 0.5,
-    marginTop: 8
+    height: 20
   },
-  imageIconSelected: {
-    tintColor: Colors.tint,
-    opacity: 1
-  },
-  title: {
-    ...Fonts.style.normal,
-    textAlign: 'center',
-    marginVertical: 5,
+  label: {
+    ...Fonts.style.bold,
+    marginTop: 3,
     fontSize: 12,
-    color: Colors.text
-  },
-  titleSelected: {
-    ...Fonts.style.normal,
-    textAlign: 'center',
-    marginVertical: 5,
-    fontSize: 12,
-    color: Colors.tint
+    backgroundColor: Colors.transparent
   }
 })

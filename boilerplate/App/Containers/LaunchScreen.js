@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, Image, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
 import styles from './Styles/LaunchScreenStyle'
-import colors from '../Themes/Colors'
-// import { Actions } from 'react-native-router-flux'
+import { Images } from '../Themes'
+import { Actions } from 'react-native-router-flux'
 
 class LaunchScreen extends Component {
   constructor (props) {
@@ -20,9 +20,12 @@ class LaunchScreen extends Component {
   startup (props) {
     if (!props.isStarting && this.state.isStartUp) {
       this.setState({ isStartUp: false })
-      if (props.user) {
-      } else {
-      }
+      // if (props.user) {
+      // } else {
+      // }
+      setTimeout(() => {
+        Actions.homeScreen()
+      }, 3000)
     }
   }
 
@@ -37,19 +40,21 @@ class LaunchScreen extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>WELCOME</Text>
-        <Text style={styles.title}>APP</Text>
-        {<ActivityIndicator style={styles.loading} size='large' color={colors.green} />}
-      </View>
+      <ImageBackground source={Images.splash} style={styles.mainContainer}>
+        <Image style={styles.logo} source={Images.logo} />
+        <View style={styles.content}>
+          <ActivityIndicator color='#fff' size='small' />
+          <Text style={styles.contentTextStyles}>Welcome to Ignite app</Text>
+        </View>
+      </ImageBackground>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    isStarting: state.startup.isStarting,
-    user: state.auth.user
+    isStarting: state.startup.isStarting
+    // user: state.auth.user
   }
 }
 

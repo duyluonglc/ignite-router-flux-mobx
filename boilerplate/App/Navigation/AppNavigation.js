@@ -53,8 +53,8 @@ class AppNavigation extends Component {
                   icon={TabIcon}
                   type='reset'
                   tabBarPosition='bottom'
-                  inactiveBackgroundColor={Colors.transparent}
-                  activeBackgroundColor={Colors.transparent}
+                  inactiveBackgroundColor={Colors.snow}
+                  activeBackgroundColor={Colors.snow}
                   swipeEnabled={false}
                   animationEnabled={false}
                   gestureEnabled={false}
@@ -62,16 +62,16 @@ class AppNavigation extends Component {
                   lazy
                   tabBarStyle={styles.tabBarStyle}
                 >
-                  <Stack initial key='tabHome' label='home' imageSource={Images.iconHome}>
-                    <Scene panHandlers={null} key='homeScreen' component={HomeScreen} menuButton />
+                  <Stack initial key='tabHome' label='Home' imageSource={Images.iconHome}>
+                    <Scene panHandlers={null} key='homeScreen' component={HomeScreen} menuButton searchButton />
                   </Stack>
-                  <Stack key='tabExplore' label='explore' imageSource={Images.iconExplore}>
+                  <Stack key='tabExplore' label='Explore' imageSource={Images.iconExplore}>
                     <Scene panHandlers={null} key='exploreScreen' component={ExploreScreen} menuButton />
                   </Stack>
-                  <Stack key='tabNotification' label='notification' imageSource={Images.iconExplore}>
+                  <Stack key='tabNotification' label='Notification' imageSource={Images.iconNotification}>
                     <Scene panHandlers={null} key='notificationScreen' component={NotificationScreen}menuButton />
                   </Stack>
-                  <Stack key='tabMore' label='more' imageSource={Images.iconMenu}>
+                  <Stack key='tabMore' label='More' imageSource={Images.iconMenu}>
                     <Scene panHandlers={null} key='manageScreen' component={ManageScreen} menuButton />
                   </Stack>
                 </Tabs>
@@ -79,7 +79,7 @@ class AppNavigation extends Component {
             </Stack>
             <Scene key='lightBox' component={BaseLightbox} />
           </Lightbox>
-          <Scene component={MessageBar} hideNavBar />
+          <Scene component={MessageBar} />
         </Overlay>
       </Router>
     )

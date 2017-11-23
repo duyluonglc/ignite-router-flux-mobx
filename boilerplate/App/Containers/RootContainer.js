@@ -10,8 +10,6 @@ import styles from './Styles/RootContainerStyles'
 import { Metrics } from '../Themes'
 
 class RootContainer extends Component {
-  state = {}
-
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {

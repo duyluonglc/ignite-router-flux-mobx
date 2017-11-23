@@ -29,22 +29,25 @@ export default StyleSheet.create({
     textAlign: 'left',
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.instructions,
-    paddingLeft: 20,
+    paddingLeft: 8,
     color: Colors.snow,
     flexDirection: 'row'
   },
   searchIcon: {
-    left: Metrics.baseMargin,
-    alignSelf: 'center',
-    color: Colors.snow,
-    backgroundColor: Colors.transparent
+    marginLeft: 8,
+    backgroundColor: Colors.transparent,
+    width: 15,
+    height: 15
   },
   clearTextIcon: {
-    paddingHorizontal: 8,
-    paddingVertical: 5,
-    alignSelf: 'center',
+    marginLeft: 6,
+    marginRight: 6,
+    marginTop: 5,
+    marginBottom: 5,
     color: Colors.snow,
-    backgroundColor: Colors.transparent
+    backgroundColor: Colors.transparent,
+    width: 15,
+    height: 15
   },
   cancelButton: {
     alignItems: 'center',

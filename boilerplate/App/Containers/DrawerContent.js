@@ -20,7 +20,7 @@ class DrawerContent extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Drawer Content</Text>
-        <Button onPress={Actions.closeDrawer} title='Back' />
+        <Button onPress={() => Actions.drawerClose()} title='Back' />
       </View>
     )
   }
