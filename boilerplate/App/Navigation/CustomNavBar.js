@@ -19,9 +19,9 @@ class CustomNavBar extends React.Component {
     }
   }
 
-  // static contextTypes = {
-  //   drawer: PropTypes.object.isRequired
-  // }
+  static contextTypes = {
+    drawer: PropTypes.object
+  }
 
   componentWillMount () {
     BackHandler.addEventListener('hardwareBackPress', function () {
@@ -31,7 +31,7 @@ class CustomNavBar extends React.Component {
   }
 
   openDrawer () {
-    // this.context.drawer.open()
+    this.context.drawer.open()
   }
 
   back () {
