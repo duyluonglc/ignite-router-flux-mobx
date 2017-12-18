@@ -20,10 +20,10 @@ class CustomNavBar extends React.Component {
   }
 
   componentWillMount () {
-    BackHandler.addEventListener('hardwareBackPress', function () {
-      Actions.pop()
-      return true
-    })
+    // BackHandler.addEventListener('hardwareBackPress', function () {
+    //   Actions.pop()
+    //   return true
+    // })
   }
 
   openDrawer () {
