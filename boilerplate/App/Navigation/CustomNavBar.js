@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, TouchableOpacity, Image, BackHandler, ViewPropTypes } from 'react-native'
+import { View, TouchableOpacity, Image, ViewPropTypes } from 'react-native'
 import SearchActions from '../Redux/SearchRedux'
 import styles from './Styles/CustomNavBarStyle'
 import { connect } from 'react-redux'
@@ -17,13 +17,6 @@ class CustomNavBar extends React.Component {
     this.state = {
       showSearchBar: false
     }
-  }
-
-  componentWillMount () {
-    // BackHandler.addEventListener('hardwareBackPress', function () {
-    //   Actions.pop()
-    //   return true
-    // })
   }
 
   openDrawer () {

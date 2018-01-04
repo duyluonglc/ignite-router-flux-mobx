@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styles from './Styles/NavigationStyles'
 import { Colors, Images } from '../Themes'
 import {
+  Actions,
   Scene,
   Router,
   Reducer,
@@ -35,8 +36,15 @@ class AppNavigation extends Component {
         return defaultReducer(state, action)
       }
     }
+    const onBackPress = () => {
+      if (Actions.state.index !== 0) {
+        return false
+      }
+      Actions.pop()
+      return true
+    }
     return (
-      <Router createReducer={reducerCreate} navBar={CustomNavBar}>
+      <Router createReducer={reducerCreate} backAndroidHandler={onBackPress} navBar={CustomNavBar}>
         <Overlay>
           <Lightbox>
             <Stack key='root' hideNavBar>

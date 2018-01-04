@@ -1,56 +1,56 @@
 {
-  "name": "ignite-router-flux",
-  "description": "Infinite Red's hot boilerplate for React Native.",
-  "license": "MIT",
-  "repository": "cvt3894/ignite-router-flux",
-  "homepage": "https://github.com/cvt3894/ignite-router-flux",
-  "version": "0.0.8",
-  "files": [
-    "boilerplate",
-    "commands",
-    "lib",
-    "templates",
-    "boilerplate.js",
-    "ignite.json",
-    "options.js",
-    "plugin.js",
-    "readme.md",
-    "screenExamples.js"
-  ],
-  "author": {
-    "name": "Infinite Red",
-    "email": "npm@infinite.red",
-    "url": "https://github.com/cvt3894/ignite-router-flux"
-  },
-  "scripts": {
-    "lint": "standard",
-    "test": "jest",
-    "watch": "jest --runInBand --watch",
-    "coverage": "jest --runInBand --coverage",
-    "shipit": "np"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "globals": [
-      "__DEV__",
-      "jasmine",
-      "beforeAll",
-      "afterAll",
-      "test",
-      "expect",
-      "describe"
-    ]
-  },
-  "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "fs-jetpack": "^1.0.0",
-    "jest": "^20.0.4",
-    "np": "^2.15.0",
-    "sinon": "^2.3.1",
-    "standard": "^10.0.2",
-    "tempy": "^0.1.0"
-  },
-  "dependencies": {
-    "ramda": "^0.23.0"
-  }
+    "name": "ignite-router-flux",
+    "description": "Infinite Red's hot boilerplate for React Native.",
+    "license": "MIT",
+    "repository": "cvt3894/ignite-router-flux",
+    "homepage": "https://github.com/cvt3894/ignite-router-flux",
+    "version": "0.0.9",
+    "files": [
+        "boilerplate",
+        "commands",
+        "lib",
+        "templates",
+        "boilerplate.js",
+        "ignite.json",
+        "options.js",
+        "plugin.js",
+        "readme.md",
+        "screenExamples.js"
+    ],
+    "author": {
+        "name": "Infinite Red",
+        "email": "npm@infinite.red",
+        "url": "https://github.com/cvt3894/ignite-router-flux"
+    },
+    "scripts": {
+        "lint": "standard",
+        "test": "jest",
+        "watch": "jest --runInBand --watch",
+        "coverage": "jest --runInBand --coverage",
+        "shipit": "np"
+    },
+    "standard": {
+        "parser": "babel-eslint",
+        "globals": [
+            "__DEV__",
+            "jasmine",
+            "beforeAll",
+            "afterAll",
+            "test",
+            "expect",
+            "describe"
+        ]
+    },
+    "devDependencies": {
+        "babel-eslint": "^7.1.1",
+        "fs-jetpack": "^1.0.0",
+        "jest": "^20.0.4",
+        "np": "^2.15.0",
+        "sinon": "^2.3.1",
+        "standard": "^10.0.2",
+        "tempy": "^0.1.0"
+    },
+    "dependencies": {
+        "ramda": "^0.23.0"
+    }
 }
