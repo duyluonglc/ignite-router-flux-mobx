@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View } from 'react-native'
-import Launch from './components/Launch'
-import Register from './components/Register'
-import Login from './components/Login'
-import Login2 from './components/Login2'
-import Login3 from './components/Login3'
+import { Platform, StyleSheet, Text } from 'react-native'
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
 import {
   Scene,
@@ -24,6 +19,11 @@ import DemoLightbox from '../Components/lightbox/DemoLightbox'
 import DrawerContent from '../Components/drawer/DrawerContent'
 import TabIcon from '../Components/tab/TabIcon'
 
+import Launch from '../Containers/Launch'
+import Register from '../Containers/Register'
+import Login from '../Containers/Login'
+import Login2 from '../Containers/Login2'
+import Login3 from '../Containers/Login3'
 import Home from '../Containers/Home'
 import TabView from '../Containers/TabView'
 import EchoView from '../Containers/EchoView'
@@ -150,6 +150,7 @@ class AppNavigation extends Component {
                       tabBarStyle={styles.tabBarStyle}
                       activeBackgroundColor='white'
                       inactiveBackgroundColor='rgba(255, 0, 0, 0.5)'
+                      tabBarPosition='bottom'
                     >
                       <Stack
                         key='tab_1'

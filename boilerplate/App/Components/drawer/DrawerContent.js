@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, ViewPropTypes } from 'react-native';
-import Button from 'react-native-button';
-import { Actions } from 'react-native-router-flux';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { StyleSheet, Text, View, ViewPropTypes } from 'react-native'
+import Button from 'react-native-button'
+import { Actions } from 'react-native-router-flux'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,22 +11,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: 'red',
-  },
-});
+    borderColor: 'red'
+  }
+})
 
 class DrawerContent extends React.Component {
   static propTypes = {
     name: PropTypes.string,
     sceneStyle: ViewPropTypes.style,
-    title: PropTypes.string,
+    title: PropTypes.string
   }
 
   static contextTypes = {
-    drawer: PropTypes.object,
+    drawer: PropTypes.object
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         {/* <Text>Drawer Content</Text>
@@ -43,11 +43,11 @@ class DrawerContent extends React.Component {
         <Button onPress={Actions.tab_2}>Switch to tab2</Button>
         <Button onPress={Actions.tab_3}>Switch to tab3</Button>
         <Button onPress={Actions.tab_4}>Switch to tab4</Button>
-        <Button onPress={() => { Actions.tab_5({ data: 'test!' }); }}>Switch to tab5 with data</Button>
+        <Button onPress={() => { Actions.tab_5({ data: 'test!' }) }}>Switch to tab5 with data</Button>
         <Button onPress={Actions.echo}>Push Clone Scene (EchoView)</Button>
       </View >
-    );
+    )
   }
 }
 
-export default DrawerContent;
+export default DrawerContent
