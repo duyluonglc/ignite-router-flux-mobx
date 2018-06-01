@@ -1,6 +1,6 @@
-# Ignite IR Boilerplate
+# Ignite IR Boilerplate ("Andross")
 
-[![Build Status](https://semaphoreci.com/api/v1/ir/ignite-ir-boilerplate/branches/master/badge.svg)](https://semaphoreci.com/ir/ignite-ir-boilerplate)
+[![Build Status](https://semaphoreci.com/api/v1/ir/ignite-ir-boilerplate-andross/branches/master/badge.svg)](https://semaphoreci.com/ir/ignite-ir-boilerplate-andross)
 
 
 
@@ -10,7 +10,7 @@ This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way 
 
 Currently includes:
 
-* React Native 0.52.2 (but you can change this if you want to experiment)
+* React Native 0.55.1 (but you can change this if you want to experiment)
 * React Navigation
 * Redux
 * Redux Sagas
@@ -147,7 +147,7 @@ Helpers for transforming data between API and your application and vice versa. A
 
 This folder (located as a sibling to `App`) contains sample Jest snapshot and unit tests for your application.
 
-If you would like to have the `ignite generate` command include the generation of tests when avaiable, add 
+If you would like to have the `ignite generate` command include the generation of tests when available, add 
 `"test": "jest"` or `"test": "ava"` to `./ignite/ignite.json`, depending on the test runner you are using.
 
 **Previous Boilerplates**
@@ -156,4 +156,4 @@ If you would like to have the `ignite generate` command include the generation o
 
 ## Premium Support
 
-[Ignite CLI](https://infinite.red/ignite) and [Ignite IR Boilerplate](https://github.com/infinitered/ignite-ir-boilerplate), as open source projects, are free to use and always will be. [Infinite Red](https://infinite.red/) offers premium Ignite CLI support and general mobile app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
+[Ignite CLI](https://infinite.red/ignite) and [Ignite IR Boilerplate](https://github.com/infinitered/ignite-ir-boilerplate-andross), as open source projects, are free to use and always will be. [Infinite Red](https://infinite.red/) offers premium Ignite CLI support and general mobile app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
