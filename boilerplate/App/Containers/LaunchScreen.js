@@ -1,11 +1,34 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
-import { Images } from '../Themes'
+import { connect } from 'react-redux'
+import { bindActionCreators, AuthActions } from '../Redux/Actions'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
+import { Images } from '../Themes'
 
-export default class LaunchScreen extends Component {
+class LaunchScreen extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      isStartUp: true
+    }
+  }
+
+  static getDerivedStateFromProps (nextProps, prevState) {
+    if (nextProps.isStarting !== prevState.isStarting) {
+      return {
+        isStartUp: nextProps.isStarting
+      }
+    }
+    return null
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.isStartUp !== prevState.isStartUp) {
+    }
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
@@ -27,3 +50,18 @@ export default class LaunchScreen extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isStarting: state.startup.isStarting,
+    auth: state.auth
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(AuthActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen)
