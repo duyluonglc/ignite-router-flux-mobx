@@ -12,6 +12,7 @@ Currently includes:
 
 * React Native 0.55.1 (but you can change this if you want to experiment)
 * React Navigation
+* react-native-ruoter-flux
 * Redux
 * Redux Sagas
 * And more!
