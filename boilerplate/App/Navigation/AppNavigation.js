@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Platform, StyleSheet, Text } from 'react-native'
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator'
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
 import {
   Scene,
   Router,
