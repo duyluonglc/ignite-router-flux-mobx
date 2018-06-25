@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators, AuthActions } from '../Redux/Actions'
-
+import { Actions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 import { Images } from '../Themes'
@@ -26,6 +26,9 @@ class LaunchScreen extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (this.state.isStartUp !== prevState.isStartUp) {
+      setTimeout(() => {
+        Actions.launch()
+      }, 1000)
     }
   }
 

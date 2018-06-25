@@ -19,6 +19,7 @@ import DemoLightbox from '../Components/lightbox/DemoLightbox'
 import DrawerContent from '../Components/drawer/DrawerContent'
 import TabIcon from '../Components/tab/TabIcon'
 
+import LaunchScreen from '../Containers/LaunchScreen'
 import Launch from '../Containers/Launch'
 import Register from '../Containers/Register'
 import Login from '../Containers/Login'
@@ -86,7 +87,8 @@ class AppNavigation extends Component {
                 titleStyle={{ alignSelf: 'center' }}
               >
                 <Scene key='echo' back clone component={EchoView} getTitle={({ navigation }) => navigation.state.key} />
-                <Scene key='launch' component={Launch} title='Launch' initial />
+                <Scene key='launchScreen' component={LaunchScreen} title='Launch' initial />
+                <Scene key='launch' component={Launch} title='Launch' />
 
                 <Stack key='customNavBar' hideTabBar titleStyle={{ alignSelf: 'center' }}>
                   <Scene
