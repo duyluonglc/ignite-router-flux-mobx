@@ -12,7 +12,7 @@ Currently includes:
 
 * React Native 0.55.1 (but you can change this if you want to experiment)
 * React Navigation
-* react-native-ruoter-flux
+* react-native-router-flux
 * Redux
 * Redux Sagas
 * And more!
@@ -22,25 +22,25 @@ Currently includes:
 When you've installed the [Ignite CLI](https://github.com/infinitered/ignite), you can get started with this boilerplate like this:
 
 ```
-ignite new MyLatestCreation
+ignite new MyLatestCreation --b ignite-router-flux
 ```
 
 You can also change the React Native version, just keep in mind, we may not have tested this just yet.
 
 ```sh
-ignite new MyLatestCreation --react-native-version 0.46.0-rc.2
+ignite new MyLatestCreation --b ignite-router-flux --react-native-version 0.46.0-rc.2
 ```
 
 By default we'll ask you some questions during install as to which features you'd like.  If you just want them all, you can skip the questions:
 
 ```sh
-ignite new MyLatestCreation --max
+ignite new MyLatestCreation --b ignite-router-flux --max
 ```
 
 If you want very few of these extras:
 
 ```sh
-ignite new MyLatestCreation --min
+ignite new MyLatestCreation --b ignite-router-flux --min
 ```
 
 ## Boilerplate walkthrough
