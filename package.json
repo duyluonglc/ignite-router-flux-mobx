@@ -4,7 +4,7 @@
     "license": "MIT",
     "repository": "cvt3894/ignite-router-flux",
     "homepage": "https://github.com/cvt3894/ignite-router-flux",
-    "version": "0.0.20",
+    "version": "0.0.21",
   "files": [
     "boilerplate",
     "commands",

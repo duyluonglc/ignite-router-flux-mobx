@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Platform, StyleSheet, Text } from 'react-native'
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
+import { StackViewStyleInterpolator } from 'react-navigation-stack'
 import {
   Scene,
   Router,
@@ -78,7 +78,7 @@ class AppNavigation extends Component {
         <Overlay key='overlay'>
           <Modal key='modal'
             hideNavBar
-            transitionConfig={() => ({ screenInterpolator: CardStackStyleInterpolator.forFadeFromBottomAndroid })}
+            transitionConfig={() => ({ screenInterpolator: StackViewStyleInterpolator.forFadeFromBottomAndroid })}
           >
             <Lightbox key='lightbox'>
               <Stack
