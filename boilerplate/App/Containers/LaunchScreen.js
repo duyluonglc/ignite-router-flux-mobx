@@ -11,24 +11,6 @@ class LaunchScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      isStartUp: true
-    }
-  }
-
-  static getDerivedStateFromProps (nextProps, prevState) {
-    if (nextProps.isStarting !== prevState.isStarting) {
-      return {
-        isStartUp: nextProps.isStarting
-      }
-    }
-    return null
-  }
-
-  componentDidUpdate (prevProps, prevState) {
-    if (this.state.isStartUp !== prevState.isStartUp) {
-      setTimeout(() => {
-        Actions.launch()
-      }, 1000)
     }
   }
 
@@ -56,7 +38,6 @@ class LaunchScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isStarting: state.startup.isStarting,
     auth: state.auth
   }
 }
