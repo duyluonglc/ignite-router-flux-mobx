@@ -1,8 +1,7 @@
 export default {
-  useFixtures: false,
+  useFixtures: true,
   ezLogin: false,
-  yellowBox: __DEV__,
-  reduxLogging: __DEV__,
+  yellowBox: false,
   includeExamples: __DEV__,
-  useReactotron: __DEV__
+  mobxLogger: __DEV__
 }

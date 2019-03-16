@@ -4,8 +4,7 @@
     "container",
     "listview",
     "list",
-    "redux",
-    "saga",
+    "store",
     "screen"
   ]
 }

@@ -33,12 +33,12 @@ module.exports = async function (context) {
   // make the templates
   await ignite.copyBatch(context, jobs, props)
 
-  // if using `react-navigation` go the extra step
+  // if using `react-native-router-flux` go the extra step
   // and insert the screen into the nav router
-  if (config.navigation === 'react-navigation') {
+  if (config.navigation === 'react-native-router-flux') {
     const appNavFilePath = `${process.cwd()}/App/Navigation/AppNavigation.js`
     const importToAdd = `import ${screenName} from '../Containers/${screenName}'`
-    const routeToAdd = `  ${screenName}: { screen: ${screenName} },`
+    const routeToAdd = `              <Scene key='${name}' component={${screenName}} title='${screenName}' />`
 
     if (!filesystem.exists(appNavFilePath)) {
       const msg = `No '${appNavFilePath}' file found.  Can't insert screen.`
@@ -54,7 +54,7 @@ module.exports = async function (context) {
 
     // insert screen route
     ignite.patchInFile(appNavFilePath, {
-      after: patterns[patterns.constants.PATTERN_ROUTES],
+      before: patterns[patterns.constants.PATTERN_ROUTES],
       insert: routeToAdd
     })
   } else {

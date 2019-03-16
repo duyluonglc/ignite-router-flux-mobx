@@ -20,6 +20,15 @@ const create = (baseURL = 'https://api.github.com/') => {
     timeout: 10000
   })
 
+  if (__DEV__) {
+    api.addMonitor(response => {
+      console.log(response.config.method, response.config.url)
+      console.log('response', response)
+    })
+  }
+
+  const setToken = token => api.setHeader('Authorization', `Bearer ${token}`)
+
   // ------
   // STEP 2
   // ------
@@ -34,9 +43,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const login = (email, password) => api.post('/login', { email, password })
 
   // ------
   // STEP 3
@@ -51,10 +58,9 @@ const create = (baseURL = 'https://api.github.com/') => {
   // private scoped goodies in JavaScript.
   //
   return {
+    setToken,
     // a list of the API functions from step 2
-    getRoot,
-    getRate,
-    getUser
+    login
   }
 }
 

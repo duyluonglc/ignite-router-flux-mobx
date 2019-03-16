@@ -1,24 +1,20 @@
 export default {
+  setToken: token => null,
   // Functions return fixtures
-  getRoot: () => {
-    return {
-      ok: true,
-      data: require('../Fixtures/root.json')
-    }
-  },
-  getRate: () => {
-    return {
-      ok: true,
-      data: require('../Fixtures/rateLimit.json')
-    }
-  },
-  getUser: (username) => {
-    // This fixture only supports gantman or else returns skellock
-    const gantmanData = require('../Fixtures/gantman.json')
-    const skellockData = require('../Fixtures/skellock.json')
-    return {
-      ok: true,
-      data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
-    }
+  login: async (email, password) => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          ok: true,
+          data: {
+            token: 'sample_token',
+            user: {
+              email: 'test@mail.com',
+              name: 'Test user'
+            }
+          }
+        })
+      }, 3000)
+    })
   }
 }

@@ -10,11 +10,10 @@ This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way 
 
 Currently includes:
 
-* React Native 0.55.1 (but you can change this if you want to experiment)
-* React Navigation
+* React Native 0.57.7 (but you can change this if you want to experiment)
 * react-native-router-flux
-* Redux
-* Redux Sagas
+* mobx-react
+* mobx-sync
 * And more!
 
 ## Quick Start
@@ -22,25 +21,13 @@ Currently includes:
 When you've installed the [Ignite CLI](https://github.com/infinitered/ignite), you can get started with this boilerplate like this:
 
 ```
-ignite new MyLatestCreation --b ignite-router-flux
+ignite new MyLatestCreation --b ignite-router-flux-mobx
 ```
 
 You can also change the React Native version, just keep in mind, we may not have tested this just yet.
 
 ```sh
-ignite new MyLatestCreation --b ignite-router-flux --react-native-version 0.46.0-rc.2
-```
-
-By default we'll ask you some questions during install as to which features you'd like.  If you just want them all, you can skip the questions:
-
-```sh
-ignite new MyLatestCreation --b ignite-router-flux --max
-```
-
-If you want very few of these extras:
-
-```sh
-ignite new MyLatestCreation --b ignite-router-flux --min
+ignite new MyLatestCreation --b ignite-router-flux-mobx --react-native-version 0.58.0
 ```
 
 ## Boilerplate walkthrough
@@ -51,7 +38,7 @@ Your `App` folder is where most of the goodies are found in an Ignite Next app. 
 
 Containers are (mostly) full screens, although they can be sections of screens or application containers.
 
-* `App.js` - your main application. We create a Redux store and configure it here
+* `App.js` - your main application. 
 * `RootContainer.js` - main view of your application. Contains your status bar and navigation component
 * `LaunchScreen.js` - this is the first screen shown in your application. It's loaded into the Navigation component
 * `LoginScreen.js` - an example login screen. Read the comments in there to learn more!
@@ -71,7 +58,6 @@ Your primary and other navigation components reside here.
 
 * `AppNavigation.js` - loads in your initial screen and creates your menu(s) in a StackNavigation
 * `Styles` - styling for the navigation
-* `ReduxNavigation.js` - This file contains the core navigation of your application. If you ever change your launch screen, make sure to change it also at `if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {`, otherwise you may encounter navigation problems with the Android back button!
 
 ### Components
 
@@ -104,33 +90,24 @@ Initialize and configure things here.
 
 * `AppConfig.js` - simple React Native configuration here
 * `DebugConfig.js` - define how you want your debug environment to act
-* `ReactotronConfig.js` - configures [Reactotron](https://github.com/infinitered/reactotron) in your project (Note: this [will be extracted](https://github.com/infinitered/ignite/issues/779) into a plugin in the future)
-* `ReduxPersist.js` - configures Redux Persist (Note: this [will be extracted](https://github.com/infinitered/ignite/issues/780) into a plugin in the future)
-
 ### Fixtures
 
 Contains json files that mimic API responses for quicker development. These are used by the `Services/FixtureApi.js` object to mock API responses.
 
-### Redux, Sagas
+### Stores
 
-Contains a preconfigured Redux and Redux-Sagas setup. Review each file carefully to see how Redux interacts with your application.
+Contains a preconfigured Stores setup. Review each file carefully to see how Mobx interacts with your application.
 
 Here again we have generators to help you out. You just have to use one of the following:
 
-* `ignite g redux Amazing` - Will generate and link the redux for `Amazing`.
-* `ignite g saga Amazing` - The same as above, but for the Sagas
-
-_TODO: explain more about Redux & Redux Sagas here_
+* `ignite g store Task` - Will generate and link the store for `Task`.
 
 ### Services
 
 Contains your API service and other important utilities for your application.
 
 * `Api.js` - main API service, giving you an interface to communicate with your back end
-* `ExamplesRegistry.js` - lets you view component and Ignite plugin examples in your app
 * `FixtureApi.js` - mocks your API service, making it faster to develop early on in your app
-* `ImmutablePersistenceTransform.js` - part of the redux-persist implementation (will be removed)
-* `RehydrationServices.js` - part of the redux-persist implementation (will be removed)
 
 ### Lib
 
@@ -150,11 +127,3 @@ This folder (located as a sibling to `App`) contains sample Jest snapshot and un
 
 If you would like to have the `ignite generate` command include the generation of tests when available, add 
 `"test": "jest"` or `"test": "ava"` to `./ignite/ignite.json`, depending on the test runner you are using.
-
-**Previous Boilerplates**
-
-* [2016 aka Ignite 1.0](https://github.com/infinitered/ignite-ir-boilerplate-2016)
-
-## Premium Support
-
-[Ignite CLI](https://infinite.red/ignite) and [Ignite IR Boilerplate](https://github.com/infinitered/ignite-ir-boilerplate-andross), as open source projects, are free to use and always will be. [Infinite Red](https://infinite.red/) offers premium Ignite CLI support and general mobile app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.

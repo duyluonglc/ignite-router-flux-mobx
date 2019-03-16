@@ -1,41 +1,36 @@
-// @cliDescription  Generates a component, styles, and an optional test.
+// @cliDescription  Generates a component, supporting files, and a storybook test.
 
 module.exports = async function (context) {
   // grab some features
-  const { parameters, strings, print, ignite } = context
+  const { parameters, strings, print, ignite, patching } = context
   const { pascalCase, isBlank } = strings
-  const config = ignite.loadIgniteConfig()
-  const { tests } = config
-
-  const options = parameters.options || {}
-
-  const hasFolder = !isBlank(options.folder)
 
   // validation
-  if (isBlank(parameters.first) && !hasFolder) {
+  if (isBlank(parameters.first)) {
     print.info(`${context.runtime.brand} generate component <name>\n`)
     print.info('A name is required.')
     return
   }
 
-  let componentPath = hasFolder ? `${options.folder}/${parameters.first || 'index'}` : parameters.first
+  const name = parameters.first
+  const pascalName = pascalCase(name)
 
-  let pathComponents = componentPath.split('/').map(pascalCase)
-  let name = pathComponents.pop()
-  if (name === 'Index') { name = 'index' }
-  const relativePath = pathComponents.length ? pathComponents.join('/') + '/' : ''
-
-  const props = { name }
-  const jobs = [{
-    template: 'component.ejs',
-    target: `App/Components/${relativePath}${name}.js`
-  }, {
-    template: 'component-style.ejs',
-    target: `App/Components/${relativePath}Styles/${name}Style.js`
-  }, tests === 'ava' && {
-    template: 'component-test.ejs',
-    target: `Test/Components/${relativePath}${name}Test.js`
-  }]
+  const props = { name, pascalName }
+  const jobs = [
+    {
+      template: 'component.tsx.ejs',
+      target: `app/components/${name}/${name}.tsx`
+    }, {
+      template: 'component.story.tsx.ejs',
+      target: `app/components/${name}/${name}.story.tsx`
+    }, {
+      template: 'rollup-index.ts.ejs',
+      target: `app/components/${name}/index.ts`
+    }
+  ]
 
   await ignite.copyBatch(context, jobs, props)
+
+  // wire up example
+  patching.insertInFile('./storybook/storybook-registry.ts', '\n', `require("../app/components/${name}/${name}.story")`)
 }

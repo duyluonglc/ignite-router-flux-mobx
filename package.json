@@ -1,10 +1,10 @@
 {
-    "name": "ignite-router-flux",
-    "description": "Infinite Red's hot boilerplate for React Native.",
-    "license": "MIT",
-    "repository": "cvt3894/ignite-router-flux",
-    "homepage": "https://github.com/cvt3894/ignite-router-flux",
-    "version": "0.0.22",
+  "name": "ignite-router-flux-mobx",
+  "description": "Ignite boilerplate for React Native with react-native-router-flux and mobx.",
+  "license": "MIT",
+  "repository": "duyluonglc/ignite-router-flux-mobx",
+  "homepage": "https://github.com/duyluonglc/ignite-router-flux-mobx",
+  "version": "0.1.0",
   "files": [
     "boilerplate",
     "commands",
@@ -18,9 +18,9 @@
     "screenExamples.js"
   ],
   "author": {
-    "name": "Infinite Red",
-    "email": "npm@infinite.red",
-    "url": "https://github.com/cvt3894/ignite-router-flux"
+    "name": "Duy Luong",
+    "email": "duyluonglc@gmail.com",
+    "url": "https://github.com/duyluonglc/ignite-router-flux-mobx"
   },
   "scripts": {
     "lint": "standard",

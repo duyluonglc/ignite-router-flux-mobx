@@ -38,10 +38,9 @@ async function install (context) {
   const { red, yellow, bold, gray, blue } = colors
 
   const perfStart = (new Date()).getTime()
-
-  const name = parameters.third
+  const name = parameters.first
   const spinner = print
-    .spin(`using the ${red('Infinite Red')} boilerplate v2 (code name 'Andross')`)
+    .spin(`using the ${red('Infinite Red')} boilerplate router-flux-mobx`)
     .succeed()
 
   // attempt to install React Native or die trying
@@ -103,7 +102,7 @@ async function install (context) {
     i18n: answers['i18n']
   }
   await ignite.copyBatch(context, templates, templateProps, {
-    quiet: true,
+    quiet: false,
     directory: `${ignite.ignitePluginPath()}/boilerplate`
   })
 
@@ -173,40 +172,34 @@ async function install (context) {
 
     await system.spawn(`ignite add ${boilerplate} ${debugFlag}`, { stdio: 'inherit' })
 
-    // now run install of Ignite Plugins
-    if (answers['dev-screens'] === 'Yes') {
-      await system.spawn(`ignite add dev-screens@"~>2.2.0" ${debugFlag}`, {
-        stdio: 'inherit'
-      })
-    }
+    // react native link -- must use spawn & stdio: ignore or it hangs!! :(
+    spinner.text = `▸ linking native libraries`
+    spinner.start()
+    await system.spawn('react-native link', { stdio: 'ignore' })
+    spinner.stop()
 
-    if (answers['vector-icons'] === 'react-native-vector-icons') {
-      await system.spawn(`ignite add vector-icons@"~>1.0.0" ${debugFlag}`, {
-        stdio: 'inherit'
-      })
-    }
+    await ignite.addModule('react-native-gesture-handler', { version: '1.0.9', link: true })
 
-    if (answers['i18n'] === 'react-native-i18n') {
-      await system.spawn(`ignite add i18n@"~>1.0.0" ${debugFlag}`, { stdio: 'inherit' })
-    }
+    ignite.patchInFile(`${process.cwd()}/android/app/src/main/java/com/${name.toLowerCase()}/MainActivity.java`, {
+      after: 'import com.facebook.react.ReactActivity;',
+      insert: `
+      import com.facebook.react.ReactActivityDelegate;
+      import com.facebook.react.ReactRootView;
+      import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;`
+    })
 
-    if (answers['animatable'] === 'react-native-animatable') {
-      await system.spawn(`ignite add animatable@"~>1.0.0" ${debugFlag}`, {
-        stdio: 'inherit'
-      })
-    }
-
-    if (answers['redux-persist'] === 'Yes') {
-      await system.spawn(`ignite add redux-persist@"~>1.0.1" ${debugFlag}`, {
-        stdio: 'inherit'
-      })
-    }
-
-    if (parameters.options.lint !== 'false') {
-      await system.spawn(`ignite add standard@"~>1.0.0" ${debugFlag}`, {
-        stdio: 'inherit'
-      })
-    }
+    ignite.patchInFile(`${process.cwd()}/android/app/src/main/java/com/${name.toLowerCase()}/MainActivity.java`, {
+      after: `public class MainActivity extends ReactActivity {`,
+      insert: '\n  @Override\n' +
+        '  protected ReactActivityDelegate createReactActivityDelegate() {\n' +
+        '    return new ReactActivityDelegate(this, getMainComponentName()) {\n' +
+        '      @Override\n' +
+        '      protected ReactRootView createRootView() {\n' +
+        '       return new RNGestureHandlerEnabledRootView(MainActivity.this);\n' +
+        '      }\n' +
+        '    };\n' +
+        '  }'
+    })
   } catch (e) {
     ignite.log(e)
     throw e
@@ -225,6 +218,15 @@ async function install (context) {
     spinner.succeed(`configured git`)
   }
 
+  // re-run yarn
+  const installDeps = ignite.useYarn ? 'yarn' : 'npm install'
+  await system.run(installDeps)
+  spinner.succeed(`Installed dependencies`)
+
+  // re-run react-native link
+  await system.spawn('react-native link', { stdio: 'ignore' })
+  spinner.succeed(`Linked dependencies`)
+
   const perfDuration = parseInt(((new Date()).getTime() - perfStart) / 10) / 100
   spinner.succeed(`ignited ${yellow(name)} in ${perfDuration}s`)
 
@@ -240,10 +242,6 @@ async function install (context) {
       react-native run-ios
       react-native run-android${androidInfo}
       ignite --help
-
-    ${gray('Read the walkthrough at https://github.com/infinitered/ignite-ir-boilerplate-andross/blob/master/readme.md#boilerplate-walkthrough')}
-
-    ${blue('Need additional help? Join our Slack community at http://community.infinite.red.')}
 
     ${bold('Now get cooking! 🍽')}
   `
