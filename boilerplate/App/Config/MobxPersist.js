@@ -48,6 +48,8 @@ trunk.init(__INITIAL_STATE__).then(() => {
    * and any changes now will be persisted
    */
   console.log('Stores loaded!')
-  const { auth } = stores
-  auth.checkLogged()
+  setTimeout(() => {
+    const { auth } = stores
+    auth.checkLogged()
+  }, 100)
 })
