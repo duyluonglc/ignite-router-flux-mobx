@@ -24,10 +24,6 @@ module.exports = {
       {
         template: 'component-style.ejs',
         target: `App/Components/${name}/${name}Style.js`
-      },
-      {
-        template: 'rollup-index.ejs',
-        target: `App/Screens/${name}/index.js`
       }
     ]
 

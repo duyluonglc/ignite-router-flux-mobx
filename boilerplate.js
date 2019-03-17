@@ -162,7 +162,7 @@ async function install (context) {
 
     await system.spawn(`ignite add ${boilerplate} ${debugFlag}`, { stdio: 'inherit' })
 
-    await ignite.addModule('react-native-gesture-handler', { version: '1.1.0', link: true })
+    await ignite.addModule('react-native-gesture-handler', { version: '1.0.9', link: true })
     // react native link -- must use spawn & stdio: ignore or it hangs!! :(
     spinner.text = `▸ linking native libraries`
     spinner.start()

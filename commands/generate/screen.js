@@ -39,10 +39,6 @@ module.exports = {
       {
         template: `screen-style.ejs`,
         target: `App/Screens/${screenName}/${screenName}Style.js`
-      },
-      {
-        template: 'rollup-index.ejs',
-        target: `App/Screens/${screenName}/index.js`
       }
     ]
 
