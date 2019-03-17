@@ -1,8 +1,4 @@
-# Ignite IR Boilerplate ("Andross")
-
-[![Build Status](https://semaphoreci.com/api/v1/ir/ignite-ir-boilerplate-andross/branches/master/badge.svg)](https://semaphoreci.com/ir/ignite-ir-boilerplate-andross)
-
-
+# Ignite IR Boilerplate ("router-flux mobx")
 
 ## The latest and greatest boilerplate for Infinite Red opinions
 
@@ -21,13 +17,13 @@ Currently includes:
 When you've installed the [Ignite CLI](https://github.com/infinitered/ignite), you can get started with this boilerplate like this:
 
 ```
-ignite new MyLatestCreation --b ignite-router-flux-mobx
+ignite new MyLatestCreation -b ignite-router-flux-mobx
 ```
 
 You can also change the React Native version, just keep in mind, we may not have tested this just yet.
 
 ```sh
-ignite new MyLatestCreation --b ignite-router-flux-mobx --react-native-version 0.58.0
+ignite new MyLatestCreation -b ignite-router-flux-mobx --react-native-version 0.58.0
 ```
 
 ## Boilerplate walkthrough
@@ -47,7 +43,6 @@ Containers are (mostly) full screens, although they can be sections of screens o
 To generate a new Container or Screen you can use the following generator commands:
 
 * `ignite g container New` - Will create a `New.js` and also a `Styles/NewStyle.js`.
-* `ignite g list New` - The same as the `container` command, but it will give you a walkthrough to generate a ListView screen. Allowing you to even pick `FlatList` or not, grid, and some other options. 
 * `ignite g screen New` - Will create a `NewScreen.js` and also a `Styles/NewScreenStyle.js`. Important to mention that the `screen` generator will add the `Screen` on the file/class name to make easier to identify.
 
 Those commands will also add the new container to the navigations file.

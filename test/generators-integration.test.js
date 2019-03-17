@@ -68,7 +68,7 @@ describe('generators', () => {
 
   test('generate store works', async () => {
     await execa(IGNITE, ['g', 'store', 'Test'], { preferLocal: false })
-    expect(jetpack.exists('App/Mobx/TestStores.js')).toBe('file')
+    expect(jetpack.exists('App/Stores/TestStores.js')).toBe('file')
     const lint = await execa('npm', ['run', 'lint'])
     expect(lint.stderr).toBe('')
   })

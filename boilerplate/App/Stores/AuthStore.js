@@ -12,6 +12,14 @@ export default class AuthStore {
   @observable token = null
   @observable user = null
 
+  @action checkLogged () {
+    if (this.token && this.user) {
+      Actions.root({ type: 'reset' })
+    } else {
+      Actions.login({ type: 'reset' })
+    }
+  }
+
   @action async login (email, password) {
     this.isLoading = true
     const response = await this.api.login(email, password)

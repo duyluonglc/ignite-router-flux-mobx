@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": "duyluonglc/ignite-router-flux-mobx",
   "homepage": "https://github.com/duyluonglc/ignite-router-flux-mobx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "files": [
     "boilerplate",
     "commands",

@@ -2,8 +2,6 @@
   "generators": [
     "component",
     "container",
-    "listview",
-    "list",
     "store",
     "screen"
   ]

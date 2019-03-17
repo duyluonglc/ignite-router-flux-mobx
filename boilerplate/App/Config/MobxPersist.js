@@ -1,14 +1,11 @@
 import { AsyncStorage } from 'react-native'
+import { AsyncTrunk } from 'mobx-sync'
 import { enableLogging } from 'mobx-logger'
 import Config from '../Config/DebugConfig'
-import AuthStore from './AuthStore'
-import Api from '../Services/Api'
-import { AsyncTrunk } from 'mobx-sync'
-import { Actions } from 'react-native-router-flux'
-import FixtureApi from '../Services/FixtureApi';
+import R from 'ramda'
+import stores from '../Stores'
 
-const __INITIAL_STATE__ = null
-
+// enable mobx logging
 enableLogging({
   predicate: () => Config.mobxLogger,
   action: true,
@@ -17,22 +14,14 @@ enableLogging({
   compute: true
 })
 
-export const api = Config.useFixtures ? FixtureApi : Api.create()
-export const auth = new AuthStore(api)
-
-export default stores = {
-  auth
-}
-
-const persistStores = {
-  auth
-}
+const persistStores = ['auth']
+const __INITIAL_STATE__ = null
 
 /**
  * @desc create an async trunk with custom options
  * @type {AsyncTrunk}
  */
-const trunk = new AsyncTrunk(persistStores, {
+const trunk = new AsyncTrunk(R.pick(persistStores, stores), {
   /**
    * @desc custom storage: built in storage is supported
    *  - localStorage
@@ -57,12 +46,8 @@ trunk.init(__INITIAL_STATE__).then(() => {
   /**
    * @desc do any staff with the loaded store,
    * and any changes now will be persisted
-   * @type {boolean}
    */
   console.log('Stores loaded!')
-  if (auth.user) {
-    Actions.root({type: 'reset'})
-  } else {
-    Actions.login({type: 'reset'})
-  }
+  const { auth } = stores
+  auth.checkLogged()
 })

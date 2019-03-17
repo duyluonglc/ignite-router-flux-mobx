@@ -31,11 +31,10 @@ async function install (context) {
     reactNative,
     print,
     system,
-    prompt,
     template
   } = context
   const { colors } = print
-  const { red, yellow, bold, gray, blue } = colors
+  const { red, yellow, bold, gray } = colors
 
   const perfStart = (new Date()).getTime()
   const name = parameters.first
@@ -71,16 +70,6 @@ async function install (context) {
   })
   spinner.stop()
 
-  // --max, --min, interactive
-  let answers
-  if (parameters.options.max) {
-    answers = options.answers.max
-  } else if (parameters.options.min) {
-    answers = options.answers.min
-  } else {
-    answers = await prompt.ask(options.questions)
-  }
-
   // generate some templates
   spinner.text = '▸ generating files'
   const templates = [
@@ -96,10 +85,7 @@ async function install (context) {
   const templateProps = {
     name,
     igniteVersion: ignite.version,
-    reactNativeVersion: rnInstall.version,
-    vectorIcons: answers['vector-icons'],
-    animatable: answers['animatable'],
-    i18n: answers['i18n']
+    reactNativeVersion: rnInstall.version
   }
   await ignite.copyBatch(context, templates, templateProps, {
     quiet: false,
@@ -113,6 +99,9 @@ async function install (context) {
   filesystem.appendAsync('.gitattributes', '*.bat text eol=crlf')
   filesystem.append('.gitignore', '\n# Misc\n#')
   filesystem.append('.gitignore', '\n.env\n')
+  filesystem.append('.gitignore', '\npackage-lock.json\n')
+  filesystem.append('.gitignore', '\nyarn.lock\n')
+  filesystem.append('.gitignore', '\nios/Podfile.lock\n')
 
   /**
    * Merge the package.json from our template into the one provided from react-native init.
@@ -156,6 +145,7 @@ async function install (context) {
   // react native link -- must use spawn & stdio: ignore or it hangs!! :(
   spinner.text = `▸ linking native libraries`
   spinner.start()
+  await system.spawn('touch ios/Podfile', { stdio: 'ignore' })
   await system.spawn('react-native link', { stdio: 'ignore' })
   spinner.stop()
 
