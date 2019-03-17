@@ -1,8 +1,0 @@
-{
-  "generators": [
-    "component",
-    "container",
-    "store",
-    "screen"
-  ]
-}

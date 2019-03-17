@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, ApplicationStyles } from '../../Themes/'
+import { Metrics, ApplicationStyles } from '../../Themes'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -14,5 +14,14 @@ export default StyleSheet.create({
   },
   centered: {
     alignItems: 'center'
+  },
+  input: {
+    backgroundColor: '#fff',
+    height: 40,
+    width: 300,
+    borderRadius: 20,
+    marginBottom: 20,
+    paddingHorizontal: 20,
+    alignSelf: 'center'
   }
 })

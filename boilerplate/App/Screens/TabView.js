@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StyleSheet, Text, View, ViewPropTypes } from 'react-native'
 import Button from 'react-native-button'
 import { Actions } from 'react-native-router-flux'
-import { inject, observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react'
 
 const propTypes = {
   name: PropTypes.string,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
     // borderWidth: 2,
     // borderColor: 'red'
   }

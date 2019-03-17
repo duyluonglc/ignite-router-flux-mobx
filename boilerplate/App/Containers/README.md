@@ -1,5 +1,5 @@
 ### Containers Folder
-A container is what they call a "Smart Component". They are usually used as "Screens".
+A container is what they call a "Smart Component".
 
 Also located in here are 2 special containers: `App.js` and `RootContainer.js`.
 

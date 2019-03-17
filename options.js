@@ -36,10 +36,10 @@ const max = {
  * The min preset.
  */
 const min = {
-  'dev-screens': 'No',
-  'vector-icons': 'none',
-  i18n: 'none',
-  animatable: 'none'
+//   'dev-screens': 'No',
+//   'vector-icons': 'none',
+//   i18n: 'none',
+//   animatable: 'none'
 }
 
 module.exports = {

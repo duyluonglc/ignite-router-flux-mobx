@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
-import styles from './Styles/LaunchScreenStyles'
-import { Images } from '../Themes'
+import styles from './LaunchScreenStyles'
+import { Images } from '../../Themes'
 
 class LaunchScreen extends Component {
   constructor (props) {

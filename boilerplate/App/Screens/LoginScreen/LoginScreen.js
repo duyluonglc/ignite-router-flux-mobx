@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, Image, View, TextInput, ActivityIndicator } from 'react-native'
-import styles from './Styles/LoginScreenStyles'
-import { Images } from '../Themes'
+import styles from './LoginScreenStyles'
+import { Images } from '../../Themes'
 import Button from 'react-native-button'
 import { inject, observer } from 'mobx-react'
 

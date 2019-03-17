@@ -1,4 +1,4 @@
-const options = require('./options')
+// const options = require('./options')
 const { merge, pipe, assoc, omit, __ } = require('ramda')
 const { getReactNativeVersion } = require('./lib/react-native-version')
 
@@ -88,7 +88,7 @@ async function install (context) {
     reactNativeVersion: rnInstall.version
   }
   await ignite.copyBatch(context, templates, templateProps, {
-    quiet: false,
+    quiet: true,
     directory: `${ignite.ignitePluginPath()}/boilerplate`
   })
 
@@ -98,10 +98,11 @@ async function install (context) {
   // https://github.com/facebook/react-native/issues/12724
   filesystem.appendAsync('.gitattributes', '*.bat text eol=crlf')
   filesystem.append('.gitignore', '\n# Misc\n#')
-  filesystem.append('.gitignore', '\n.env\n')
-  filesystem.append('.gitignore', '\npackage-lock.json\n')
-  filesystem.append('.gitignore', '\nyarn.lock\n')
-  filesystem.append('.gitignore', '\nios/Podfile.lock\n')
+  filesystem.append('.gitignore', '\n.env')
+  filesystem.append('.gitignore', '\npackage-lock.json')
+  filesystem.append('.gitignore', '\nyarn.lock')
+  filesystem.append('.gitignore', '\nios/Podfile.lock')
+  filesystem.append('.gitignore', '\nios/Pods\n')
 
   /**
    * Merge the package.json from our template into the one provided from react-native init.
@@ -168,7 +169,7 @@ async function install (context) {
     await system.spawn('react-native link', { stdio: 'ignore' })
     spinner.stop()
 
-    await ignite.addModule('react-native-gesture-handler', { version: '1.0.9', link: true })
+    await ignite.addModule('react-native-gesture-handler', { version: '1.1.0', link: true })
 
     ignite.patchInFile(`${process.cwd()}/android/app/src/main/java/com/${name.toLowerCase()}/MainActivity.java`, {
       after: 'import com.facebook.react.ReactActivity;',
