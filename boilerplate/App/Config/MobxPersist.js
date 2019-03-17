@@ -7,7 +7,7 @@ import stores from '../Stores'
 
 // enable mobx logging
 enableLogging({
-  predicate: () => Config.mobxLogger,
+  predicate: () => Config.mobxLogger && Boolean(window.navigator.userAgent),
   action: true,
   reaction: true,
   transaction: true,
