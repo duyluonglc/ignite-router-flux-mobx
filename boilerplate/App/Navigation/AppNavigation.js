@@ -14,8 +14,8 @@ import {
 } from 'react-native-router-flux'
 
 import TabView from '../Screens/TabView'
-import LaunchScreen from '../Screens/LaunchScreen'
-import LoginScreen from '../Screens/LoginScreen'
+import LaunchScreen from '../Screens/LaunchScreen/LaunchScreen'
+import LoginScreen from '../Screens/LoginScreen/LoginScreen'
 
 const styles = StyleSheet.create({
   container: {
