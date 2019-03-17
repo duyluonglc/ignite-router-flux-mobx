@@ -146,7 +146,6 @@ async function install (context) {
   // react native link -- must use spawn & stdio: ignore or it hangs!! :(
   spinner.text = `▸ linking native libraries`
   spinner.start()
-  await system.spawn('touch ios/Podfile', { stdio: 'ignore' })
   await system.spawn('react-native link', { stdio: 'ignore' })
   spinner.stop()
 
@@ -163,13 +162,12 @@ async function install (context) {
 
     await system.spawn(`ignite add ${boilerplate} ${debugFlag}`, { stdio: 'inherit' })
 
+    await ignite.addModule('react-native-gesture-handler', { version: '1.1.0', link: true })
     // react native link -- must use spawn & stdio: ignore or it hangs!! :(
     spinner.text = `▸ linking native libraries`
     spinner.start()
     await system.spawn('react-native link', { stdio: 'ignore' })
     spinner.stop()
-
-    await ignite.addModule('react-native-gesture-handler', { version: '1.1.0', link: true })
 
     ignite.patchInFile(`${process.cwd()}/android/app/src/main/java/com/${name.toLowerCase()}/MainActivity.java`, {
       after: 'import com.facebook.react.ReactActivity;',
