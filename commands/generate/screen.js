@@ -49,8 +49,8 @@ module.exports = {
     // and insert the screen into the nav router
     if (config.navigation === 'react-native-router-flux') {
       const appNavFilePath = `${process.cwd()}/App/Navigation/AppNavigation.js`
-      const importToAdd = `import ${screenName} from '../Screens/${screenName}/${screenName}'`
-      const routeToAdd = `              <Scene key='${name}' component={${screenName}} title='${screenName}' />`
+      const importToAdd = `\nimport ${screenName} from '../Screens/${screenName}/${screenName}'`
+      const routeToAdd = `\n              <Scene key='${name}' component={${screenName}} title='${screenName}' />`
 
       if (!filesystem.exists(appNavFilePath)) {
         const msg =
@@ -68,7 +68,7 @@ module.exports = {
 
       // insert screen route
       await patching.patch(appNavFilePath, {
-        before: patterns[patterns.constants.PATTERN_ROUTES],
+        after: patterns[patterns.constants.PATTERN_ROUTES],
         insert: routeToAdd
       })
     } else {
