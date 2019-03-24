@@ -10,9 +10,9 @@ export default class <%= camelCase(props.name) %>Store {
   @ignore @observable isLoading = false
   @observable <%= camelCase(props.name) %>Data = []
 
-  @action async get<%= camelCase(props.name) %> (params) {
+  @action async get<%= pascalCase(props.name) %> (params) {
     this.isLoading = true
-    const response = await this.api.get<%= camelCase(props.name) %>(params)
+    const response = await this.api.get<%= pascalCase(props.name) %>(params)
     if (response.ok) {
       this.data = response.data
       this.isLoading = false
