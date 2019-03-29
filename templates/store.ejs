@@ -6,13 +6,13 @@ import api from '../Services/ApiDefault'
 export default class <%= camelCase(props.name) %>Store {
   // @desc this field is not persisted
   @ignore @observable isLoading = false
-  @observable <%= camelCase(props.name) %>Data = []
+  @observable <%= camelCase(props.name) %>Data = null
 
   @action async get<%= pascalCase(props.name) %> (params) {
     this.isLoading = true
     const response = await api.get<%= pascalCase(props.name) %>(params)
     if (response.ok) {
-      this.data = response.data
+      this.<%= camelCase(props.name) %>Data = response.data
       this.isLoading = false
     } else {
       __DEV__ && console.log('get<%= camelCase(props.name) %> failure')

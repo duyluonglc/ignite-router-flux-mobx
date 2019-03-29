@@ -5,7 +5,7 @@ module.exports = {
   run: async function (toolbox) {
     // grab some features
     const { parameters, print, strings, ignite, patching } = toolbox
-    const { pascalCase, isBlank } = strings
+    const { pascalCase, isBlank, camelCase } = strings
 
     // validation
     if (isBlank(parameters.first)) {
@@ -15,6 +15,7 @@ module.exports = {
     }
 
     const name = pascalCase(parameters.first)
+    const camelName = camelCase(parameters.first)
     const props = { name }
 
     const jobs = [{ template: `store.ejs`, target: `App/Stores/${name}Store.js` }]
@@ -24,7 +25,7 @@ module.exports = {
 
     const storesFilePath = `${process.cwd()}/App/Stores/index.js`
     const importToAdd = `\nimport ${parameters.first} from './{name}Store'`
-    const storeToAdd = `,\n  ${parameters.first}`
+    const storeToAdd = `,\n  ${camelName}`
 
     // insert store import
     await patching.patch(storesFilePath, {
@@ -34,7 +35,7 @@ module.exports = {
 
     // insert store
     await patching.patch(storesFilePath, {
-      before: /\n\s+\}/,
+      before: /\n\s*\}/,
       insert: storeToAdd
     })
   }
