@@ -233,6 +233,8 @@ async function install (context) {
       ignite --help
 
     ${bold('Now get cooking! 🍽')}
+    
+    ${gray('(Running yarn/npm install one last time to make sure everything is installed -- please be patient!)')}
   `
 
   print.info(successMessage)

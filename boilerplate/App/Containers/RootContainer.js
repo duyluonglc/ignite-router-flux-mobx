@@ -4,8 +4,13 @@ import AppNavigation from '../Navigation/AppNavigation'
 // Styles
 import styles from './RootContainerStyles'
 import { Metrics } from '../Themes'
+import { appInit } from '../Config/MobxPersist'
 
 class RootContainer extends Component {
+  componentDidMount () {
+    appInit() // run rehyrate after all screen loaded
+  }
+
   render () {
     return (
       <View style={styles.applicationView}>

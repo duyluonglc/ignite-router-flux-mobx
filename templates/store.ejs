@@ -1,18 +1,16 @@
 import { observable, action, asMap } from 'mobx'
 import { Actions } from 'react-native-router-flux'
 import { ignore } from 'mobx-sync'
+import api from '../Services/ApiDefault'
 
 export default class <%= camelCase(props.name) %>Store {
-  constructor (api) {
-    this.api = api
-  }
   // @desc this field is not persisted
   @ignore @observable isLoading = false
   @observable <%= camelCase(props.name) %>Data = []
 
   @action async get<%= pascalCase(props.name) %> (params) {
     this.isLoading = true
-    const response = await this.api.get<%= pascalCase(props.name) %>(params)
+    const response = await api.get<%= pascalCase(props.name) %>(params)
     if (response.ok) {
       this.data = response.data
       this.isLoading = false

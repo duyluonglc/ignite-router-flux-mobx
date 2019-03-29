@@ -4,7 +4,7 @@ module.exports = {
   description: 'Generates a React Native store.',
   run: async function (toolbox) {
     // grab some features
-    const { parameters, print, strings, ignite } = toolbox
+    const { parameters, print, strings, ignite, patching } = toolbox
     const { pascalCase, isBlank } = strings
 
     // validation
@@ -21,5 +21,21 @@ module.exports = {
 
     // make the templates
     await ignite.copyBatch(toolbox, jobs, props)
+
+    const storesFilePath = `${process.cwd()}/App/Stores/index.js`
+    const importToAdd = `\nimport ${parameters.first} from './{name}Store'`
+    const storeToAdd = `,\n  ${parameters.first}`
+
+    // insert store import
+    await patching.patch(storesFilePath, {
+      after: /import\s+\w+\s+from\s+['"]\.\/\w+Store['"];?/,
+      insert: importToAdd
+    })
+
+    // insert store
+    await patching.patch(storesFilePath, {
+      before: /\n\s+\}/,
+      insert: storeToAdd
+    })
   }
 }

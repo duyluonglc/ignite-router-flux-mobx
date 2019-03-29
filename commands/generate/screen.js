@@ -1,7 +1,5 @@
 // @cliDescription  Generates an opinionated container.
 
-const patterns = require('../../lib/patterns')
-
 module.exports = {
   description: 'Generates a React Native screen.',
   run: async function (toolbox) {
@@ -49,8 +47,8 @@ module.exports = {
     // and insert the screen into the nav router
     if (config.navigation === 'react-native-router-flux') {
       const appNavFilePath = `${process.cwd()}/App/Navigation/AppNavigation.js`
-      const importToAdd = `\nimport ${screenName} from '../Screens/${screenName}/${screenName}'`
-      const routeToAdd = `\n              <Scene key='${name}' component={${screenName}} title='${screenName}' />`
+      const importToAdd = `import ${screenName} from '../Screens/${screenName}/${screenName}'\n`
+      const routeToAdd = `\n            <Scene key='${name}' component={${screenName}} title='${screenName}' />`
 
       if (!filesystem.exists(appNavFilePath)) {
         const msg =
@@ -62,13 +60,13 @@ module.exports = {
 
       // insert screen import
       await patching.patch(appNavFilePath, {
-        after: new RegExp(patterns[patterns.constants.PATTERN_NAV_IMPORTS]),
+        after: /.*from\s['"]react-native-router-flux['"];?\n/,
         insert: importToAdd
       })
 
       // insert screen route
       await patching.patch(appNavFilePath, {
-        after: patterns[patterns.constants.PATTERN_ROUTES],
+        before: /\n\s+<\/Modal>/,
         insert: routeToAdd
       })
     } else {

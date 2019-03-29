@@ -17,39 +17,40 @@ enableLogging({
 const persistStores = ['auth']
 const __INITIAL_STATE__ = null
 
-/**
- * @desc create an async trunk with custom options
- * @type {AsyncTrunk}
- */
-const trunk = new AsyncTrunk(R.pick(persistStores, stores), {
+export const appInit = () => {
   /**
-   * @desc custom storage: built in storage is supported
-   *  - localStorage
-   *  - sessionStorage
-   *  - ReactNative.AsyncStorage
+   * @desc create an async trunk with custom options
+   * @type {AsyncTrunk}
    */
-  storage: AsyncStorage,
-  /**
-   * @desc custom storage key, the default is `__mobx_sync__`
-   */
-  storageKey: '__persist_mobx_stores__',
-  /**
-   * @desc the delay time, use for mobx reaction
-   */
-  delay: 0
-})
+  const trunk = new AsyncTrunk(R.pick(persistStores, stores), {
+    /**
+     * @desc custom storage: built in storage is supported
+     *  - localStorage
+     *  - sessionStorage
+     *  - ReactNative.AsyncStorage
+     */
+    storage: AsyncStorage,
+    /**
+     * @desc custom storage key, the default is `__mobx_sync__`
+     */
+    storageKey: '__persist_mobx_stores__',
+    /**
+     * @desc the delay time, use for mobx reaction
+     */
+    delay: 0
+  })
 
-/**
- * @desc load persisted stores
- */
-trunk.init(__INITIAL_STATE__).then(() => {
   /**
-   * @desc do any staff with the loaded store,
-   * and any changes now will be persisted
+   * @desc load persisted stores
    */
-  console.log('Stores loaded!')
-  setTimeout(() => {
+  trunk.init(__INITIAL_STATE__).then(() => {
+    /**
+     * @desc do any staff with the loaded store,
+     * and any changes now will be persisted
+     */
+    console.log('Stores loaded!')
     const { auth } = stores
+    // check user already logged in
     auth.checkLogged()
-  }, 100)
-})
+  })
+}
