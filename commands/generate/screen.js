@@ -48,7 +48,7 @@ module.exports = {
     if (config.navigation === 'react-native-router-flux') {
       const appNavFilePath = `${process.cwd()}/App/Navigation/AppNavigation.js`
       const importToAdd = `import ${screenName} from '../Screens/${screenName}/${screenName}'\n`
-      const routeToAdd = `\n            <Scene key='${camelCase(name)}' component={${screenName}} title='${screenName}' back />`
+      const routeToAdd = `\n            <Scene key='${camelCase(name)}' component={${screenName}} title='${pascalCase(name)}' back />`
 
       if (!filesystem.exists(appNavFilePath)) {
         const msg =

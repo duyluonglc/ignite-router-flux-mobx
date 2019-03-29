@@ -24,7 +24,7 @@ module.exports = {
     await ignite.copyBatch(toolbox, jobs, props)
 
     const storesFilePath = `${process.cwd()}/App/Stores/index.js`
-    const importToAdd = `\nimport ${parameters.first} from './{name}Store'`
+    const importToAdd = `\nimport ${camelName} from './${name}Store'`
     const storeToAdd = `,\n  ${camelName}`
 
     // insert store import
