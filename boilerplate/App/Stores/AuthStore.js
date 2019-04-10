@@ -1,4 +1,4 @@
-import { observable, action, asMap } from 'mobx'
+import { observable, action, flow } from 'mobx'
 import { Actions } from 'react-native-router-flux'
 import { ignore } from 'mobx-sync'
 import api from '../Services/ApiDefault'
@@ -18,9 +18,9 @@ export class AuthStore {
     }
   }
 
-  @action async login (email, password) {
+  login = flow(function * (email, password) {
     this.isLoading = true
-    const response = await api.login(email, password)
+    const response = yield api.login(email, password)
     if (response.ok) {
       this.token = response.data.token
       this.user = response.data.user
@@ -30,7 +30,7 @@ export class AuthStore {
     } else {
       console.log('Login failure')
     }
-  }
+  })
 
   @action logout () {
     Actions.login({ type: 'reset' })

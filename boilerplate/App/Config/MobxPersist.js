@@ -1,3 +1,4 @@
+import { configure } from 'mobx'
 import { AsyncStorage } from 'react-native'
 import { AsyncTrunk } from 'mobx-sync'
 import { enableLogging } from 'mobx-logger'
@@ -9,10 +10,12 @@ import stores from '../Stores'
 enableLogging({
   predicate: () => Config.mobxLogger && Boolean(window.navigator.userAgent),
   action: true,
-  reaction: true,
+  reaction: false,
   transaction: true,
   compute: true
 })
+
+configure({ enforceActions: 'always' })
 
 const persistStores = ['auth']
 const __INITIAL_STATE__ = null
