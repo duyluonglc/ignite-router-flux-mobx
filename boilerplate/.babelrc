@@ -6,6 +6,7 @@
       {
         "legacy": true
       }
-    ]
+    ],
+    "@kayakyakr/babel-plugin-mobx-async-action"
   ]
 }

@@ -51,7 +51,7 @@ export const appInit = () => {
      * @desc do any staff with the loaded store,
      * and any changes now will be persisted
      */
-    console.log('Stores loaded!')
+    __DEV__ && console.log('Stores loaded!')
     const { auth } = stores
     // check user already logged in
     auth.checkLogged()
