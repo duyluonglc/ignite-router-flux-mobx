@@ -40,7 +40,7 @@ export const appInit = () => {
     /**
      * @desc the delay time, use for mobx reaction
      */
-    delay: 0
+    delay: 100
   })
 
   /**
