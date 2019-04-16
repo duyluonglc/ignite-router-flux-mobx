@@ -10,6 +10,9 @@ export class AuthStore {
   @observable token = null
   @observable user = null
 
+  /**
+   * Check user already logged in
+   */
   @action checkLogged () {
     if (this.token && this.user) {
       Actions.root({ type: 'reset' })
@@ -18,9 +21,17 @@ export class AuthStore {
     }
   }
 
-  login = flow(function * (email, password) {
+  /**
+   * async function will transform to generate function
+   * by babel-plugin-mobx-async-action
+   *
+   * @param {String} email
+   * @param {String} password
+   */
+  @action
+  async login (email, password) {
     this.isLoading = true
-    const response = yield api.login(email, password)
+    const response = await api.login(email, password)
     if (response.ok) {
       this.token = response.data.token
       this.user = response.data.user
@@ -30,8 +41,11 @@ export class AuthStore {
     } else {
       console.log('Login failure')
     }
-  })
+  }
 
+  /**
+   * logout
+   */
   @action logout () {
     Actions.login({ type: 'reset' })
     this.token = null
