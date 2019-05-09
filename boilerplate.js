@@ -45,7 +45,8 @@ async function install (context) {
   // attempt to install React Native or die trying
   const rnInstall = await reactNative.install({
     name,
-    version: getReactNativeVersion(context)
+    version: getReactNativeVersion(context),
+    useNpm: !ignite.useYarn
   })
   if (rnInstall.exitCode > 0) process.exit(rnInstall.exitCode)
 
@@ -162,7 +163,7 @@ async function install (context) {
 
     await system.spawn(`ignite add ${boilerplate} ${debugFlag}`, { stdio: 'inherit' })
 
-    await ignite.addModule('react-native-gesture-handler', { version: '1.0.9', link: true })
+    await ignite.addModule('react-native-gesture-handler', { version: '1.2.1', link: true })
     // react native link -- must use spawn & stdio: ignore or it hangs!! :(
     spinner.text = `▸ linking native libraries`
     spinner.start()
@@ -191,6 +192,9 @@ async function install (context) {
     })
   } catch (e) {
     ignite.log(e)
+    print.error(`
+      There were errors while generating the project. Run with --debug to see verbose output.
+    `)
     throw e
   }
 
