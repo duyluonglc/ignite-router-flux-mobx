@@ -3,7 +3,7 @@ import { Actions } from 'react-native-router-flux'
 import { ignore } from 'mobx-sync'
 import api from '../Services/ApiDefault'
 
-export default class <%= camelCase(props.name) %>Store {
+class <%= pascalCase(props.name) %>Store {
   // @desc this field is not persisted
   @ignore @observable isLoading = false
   @observable <%= camelCase(props.name) %>Data = null
@@ -19,3 +19,7 @@ export default class <%= camelCase(props.name) %>Store {
     }
   }
 }
+
+const <%= camelCase(props.name) %>Store = new <%= pascalCase(props.name) %>Store()
+export default <%= camelCase(props.name) %>Store
+
