@@ -76,9 +76,8 @@ async function install (context) {
   const templates = [
     { template: 'index.js.ejs', target: 'index.js' },
     { template: 'README.md', target: 'README.md' },
-    { template: 'ignite.json.ejs', target: 'ignite/ignite.json' },
     { template: '.editorconfig', target: '.editorconfig' },
-    { template: '.babelrc', target: '.babelrc' },
+    { template: 'babel.config.js', target: 'babel.config.js' },
     { template: 'Tests/Setup.js.ejs', target: 'Tests/Setup.js' },
     { template: 'storybook/storybook.ejs', target: 'storybook/storybook.js' },
     { template: '.env.example', target: '.env.example' }
@@ -196,19 +195,6 @@ async function install (context) {
       There were errors while generating the project. Run with --debug to see verbose output.
     `)
     throw e
-  }
-
-  // git configuration
-  const gitExists = await filesystem.exists('./.git')
-  if (!gitExists && !parameters.options['skip-git'] && system.which('git')) {
-    // initial git
-    const spinner = print.spin('configuring git')
-
-    // TODO: Make husky hooks optional
-    const huskyCmd = '' // `&& node node_modules/husky/bin/install .`
-    system.run(`git init . && git add . && git commit -m "Initial commit." ${huskyCmd}`)
-
-    spinner.succeed(`configured git`)
   }
 
   // re-run yarn

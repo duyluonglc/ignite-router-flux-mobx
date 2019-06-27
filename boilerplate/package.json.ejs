@@ -16,12 +16,13 @@
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {
-    "apisauce": "^1.0.2",
+    "@react-native-community/async-storage": "^1.3.4",
+    "apisauce": "^1.0.3",
     "color": "^3.1.0",
     "mobx": "^5.9.4",
     "mobx-logger": "^0.7.1",
     "mobx-react": "^5.4.3",
-    "mobx-sync": "^2.0.0",
+    "mobx-sync": "^2.1.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
     "react-native-button": "^2.3.0",
@@ -33,18 +34,15 @@
     "@storybook/addon-storyshots": "^3.4.0",
     "@storybook/channels": "^3.4.0",
     "@storybook/react-native": "^3.2.16",
-    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@kayakyakr/babel-plugin-mobx-async-action": "^7.0.0",
-    "babel-core": "7.0.0-beta.3",
-    "babel-jest": "24.5.0",
+    "babel-eslint": "^7.1.1",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "husky": "^0.14.3",
-    "jest": "24.5.0",
-    "metro-react-native-babel-preset": "^0.49.0",
     "mockery": "^2.1.0",
     "react-dom": "16.3.0",
-    "react-test-renderer": "16.6.1"
+    "standard": "^10.0.2"
   },
   "jest": {
     "testMatch": [
@@ -63,10 +61,26 @@
     ],
     "preset": "react-native"
   },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "alert",
+      "test",
+      "jest",
+      "expect",
+      "fetch",
+      "navigator",
+      "__DEV__",
+      "XMLHttpRequest",
+      "FormData",
+      "React$Element"
+    ]
+  },
   "config": {},
   "rnpm": {
     "assets": [
       "./assets/fonts/"
     ]
-  },
+  }
 }

@@ -1,5 +1,5 @@
 import { configure } from 'mobx'
-import { AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import { AsyncTrunk } from 'mobx-sync'
 import { enableLogging } from 'mobx-logger'
 import Config from '../Config/DebugConfig'

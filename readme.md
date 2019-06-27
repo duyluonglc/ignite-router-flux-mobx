@@ -6,7 +6,7 @@ This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way 
 
 Currently includes:
 
-* React Native 0.59.4 (but you can change this if you want to experiment)
+* React Native 0.59.9 (but you can change this if you want to experiment)
 * react-native-router-flux
 * mobx-react
 * mobx-sync
