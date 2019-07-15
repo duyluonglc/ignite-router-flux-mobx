@@ -7,12 +7,14 @@
     "test:watch": "jest --watch",
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",
-    "android:build": "cd android && ./gradlew assembleRelease",
-    "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
+    "android:build": "cd android && ./gradlew assembleRelease && cd ..",
+    "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease && cd ..",
     "android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
     "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
     "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
     "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
+    "pod:install": "cd ios && pod install && cd ..",
+    "pod:update": "cd ios && pod update && cd ..",
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {
